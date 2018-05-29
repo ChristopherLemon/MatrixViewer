@@ -1,6 +1,6 @@
 # MatrixViewer
 Large and complicated matrices can be challenging to understand and visualize. Utilising Jupyter Notebooks, DataShader, HoloViews, and 
-Bokeh, the size of Matrix that can be viewed in MatrixViewer is only really limited by the amount of memory available. Plots are dynaically updated when zooming in on features, and properties 
+Bokeh, the size of Matrix that can be viewed in MatrixViewer is only really limited by the amount of memory available. Plots are dynamically updated when zooming in on features, and properties 
 of the data are dynamically aggregated allowing for quick detection of features such as extreme values and strong connections.
 
 <p>
