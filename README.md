@@ -28,9 +28,11 @@ contained in the first code block
 
     file_list = ["MATRICES/matrix.txt"]
     
-The matrix is identified by a start pattern (regex_1), rows of matrix data (regex_2), and a termination pattern (regex_3), which can be modified for slightly different formats. The default data input is
+The matrix is identified by a start pattern (regex_1), followed by rows of matrix data (regex_2), followed by a termination pattern (regex_3), which can be modified for slightly different formats. The default data input is
 
-    G=[int int float
+    G=[
+    int int float
     ...
     ...
-    int, int, float]
+    int, int, float
+    ]
