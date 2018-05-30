@@ -34,5 +34,5 @@ The matrix is identified by a start pattern (regex_1), followed by rows of matri
     int int float
     ...
     ...
-    int, int, float
+    int int float
     ]
