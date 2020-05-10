@@ -17,55 +17,55 @@ cd into the matrix_viewer directory, and install the relevant python packages.
 
 To Ulilize Datashader\Holoviews visualization cells in Jupyter notebook:
 
-python -m venv mat_env
-source mat_env/bin/activate
+    python -m venv mat_env
+    source mat_env/bin/activate
 
-pip install "holoviews[recommended]"
-pip install datashader
+    pip install "holoviews[recommended]"
+    pip install datashader
 
 To utilize PETSc linear solver:
 
 First install dependencies
 
-pip install mpi4py (Requires an mpi implementation on path, if mpi is to be used with PETSc)
-pip install numpy
+    pip install mpi4py (Requires an mpi implementation on path, if mpi is to be used with PETSc)
+    pip install numpy
 
 PETSc can be configured using a number of non-default different options. To use any of these options set
 the PETSC_CONFIGURE_OPTIONS environment variable. For example,
 
-export PETSC_CONFIGURE_OPTIONS="--download-fblaslapack=1 --download-hypre=1 --download spai=1"
+    export PETSC_CONFIGURE_OPTIONS="--download-fblaslapack=1 --download-hypre=1 --download spai=1"
 
 If PETSc is already installed see PETSC_DIR, and PETSC_ARCH appropriately. Then install petsc.
 
-pip install petsc
-pip install petsc4py
+    pip install petsc
+    pip install petsc4py
 
 To utilize SLEPc eigensolvers, PETSC must alread be installed as above. Then install slepc
 
-pip install slepc
-pip install slepc4py
+    pip install slepc
+    pip install slepc4py
 
 To Utilize AMGX solver:
 
 First install python dependencies
 
-pip install scipy cython
+    pip install scipy cython
 
 Install AMGX library. 
 
-git clone https://github.com/NVIDIA/AMGX.git
-mkdir build
-cd build
-cmake ../
-make -j16 all
+    git clone https://github.com/NVIDIA/AMGX.git
+    mkdir build
+    cd build
+    cmake ../
+    make -j16 all
 
 Then install pyamgx
 
-git clone https://github.com/shwina/pyamgx
-export AMGX_DIR=/path/to/AMGX
-export AMGX_BUILD_DIR=/path/to/AMGX/build
-cd pyamgx
-pip install .
+    git clone https://github.com/shwina/pyamgx
+    export AMGX_DIR=/path/to/AMGX
+    export AMGX_BUILD_DIR=/path/to/AMGX/build
+    cd pyamgx
+    pip install .
 
 Finally, launch Jupyter notebook
 
