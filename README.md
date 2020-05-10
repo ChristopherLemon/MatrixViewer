@@ -35,12 +35,12 @@ the PETSC_CONFIGURE_OPTIONS environment variable. For example,
 
     export PETSC_CONFIGURE_OPTIONS="--download-fblaslapack=1 --download-hypre=1 --download spai=1"
 
-If PETSc is already installed see PETSC_DIR, and PETSC_ARCH appropriately. Then install petsc.
+If PETSc is already installed set PETSC_DIR, and PETSC_ARCH appropriately. Then install PETSc.
 
     pip install petsc
     pip install petsc4py
 
-To utilize SLEPc eigensolvers, PETSC must alread be installed as above. Then install slepc
+To utilize SLEPc eigensolvers, PETSC must already be installed as above. Then install SLEPc
 
     pip install slepc
     pip install slepc4py
