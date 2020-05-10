@@ -1,7 +1,7 @@
-# MatrixViewer
+# MatrixViewer`
 Large and complicated matrices can be challenging to understand and visualize. Utilising Jupyter Notebooks, DataShader, HoloViews, and 
 Bokeh, the size of Matrix that can be viewed in MatrixViewer is only really limited by the amount of memory available. Plots are dynamically updated when zooming in on features, and properties 
-of the data are dynamically aggregated allowing for quick detection of features such as extreme values and strong connections.
+of the data are dynamically aggregated allowing for quick detection of features such as extreme values and strong connections. If installed, the matrices can be solved and analyzed using the python interfaces to a variey of external solvers such as PETSc (for Linear system solvers), SLEPc (for eigenvalue analysis), or AMGX (for gpu solvers).
 
 <p>
 <img src="https://github.com/ChristopherLemon/MatrixViewer/blob/master/Wiki/MatrixPlot.jpg" width="45%" title="Large Matrix Visualization">
@@ -13,26 +13,63 @@ of the data are dynamically aggregated allowing for quick detection of features 
 </p>
 
 # Setup 
-Requires [Anaconda](https://conda.io/docs/user-guide/install/download.html)
+cd into the matrix_viewer directory, and install the relevant python packages.
 
-cd into the matrix_viewer directory. Then create the Conda environment required for the Jupyter Notebook
+To Ulilize Datashader\Holoviews visualization cells in Jupyter notebook:
 
-    conda env create -f environment.yml
-    
-Launch Jupyter
+python -m venv mat_env
+source mat_env/bin/activate
+
+pip install "holoviews[recommended]"
+pip install datashader
+
+To utilize PETSc linear solver:
+
+First install dependencies
+
+pip install mpi4py (Requires an mpi implementation on path, if mpi is to be used with PETSc)
+pip install numpy
+
+PETSc can be configured using a number of non-default different options. To use any of these options set
+the PETSC_CONFIGURE_OPTIONS environment variable. For example,
+
+export PETSC_CONFIGURE_OPTIONS="--download-fblaslapack=1 --download-hypre=1 --download spai=1"
+
+If PETSc is already installed see PETSC_DIR, and PETSC_ARCH appropriately. Then install petsc.
+
+pip install petsc
+pip install petsc4py
+
+To utilize SLEPc eigensolvers, PETSC must alread be installed as above. Then install slepc
+
+pip install slepc
+pip install slepc4py
+
+To Utilize AMGX solver:
+
+First install python dependencies
+
+pip install scipy cython
+
+Install AMGX library. 
+
+git clone https://github.com/NVIDIA/AMGX.git
+mkdir build
+cd build
+cmake ../
+make -j16 all
+
+Then install pyamgx
+
+git clone https://github.com/shwina/pyamgx
+export AMGX_DIR=/path/to/AMGX
+export AMGX_BUILD_DIR=/path/to/AMGX/build
+cd pyamgx
+pip install .
+
+Finally, launch Jupyter notebook
 
     jupyter notebook
     
-Select the MatrixViewer notebook. Copy the matrix into the matrix_viewer/MATRICES directory. The list of matrices to analyse is
-contained in the first code block
+Select the MatrixViewer notebook. The notebook reads amtrix market format matrices - the default directory for these matrices is named MTX
 
-    file_list = ["MATRICES/matrix.txt"]
-    
-The matrix is identified by a start pattern (regex_1), followed by rows of matrix data (regex_2), followed by a termination pattern (regex_3), which can be modified for slightly different formats. The default data input is
-
-    G=[
-    int int float
-    ...
-    ...
-    int int float
-    ]
