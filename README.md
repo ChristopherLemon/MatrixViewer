@@ -35,14 +35,24 @@ the PETSC_CONFIGURE_OPTIONS environment variable. For example,
 
     export PETSC_CONFIGURE_OPTIONS="--download-fblaslapack=1 --download-hypre=1 --download spai=1"
 
-If PETSc is already installed set PETSC_DIR, and PETSC_ARCH appropriately. Then install PETSc.
+If PETSc is already installed set PETSC_DIR, and PETSC_ARCH appropriately. If PETSc is not
+installed, then install with pip. PETSc can be configured using a number of non-default different options. To use any of these options set the PETSC_CONFIGURE_OPTIONS environment variable. For example,
+
+    export PETSC_CONFIGURE_OPTIONS="--download-fblaslapack=1 --download-hypre=1 --download spai=1"
 
     pip install petsc
+
+Then install petsc4py:
+
     pip install petsc4py
 
-To utilize SLEPc eigensolvers, PETSC must already be installed as above. Then install SLEPc
+To utilize SLEPc eigensolvers, PETSC must already be installed. If SLEPc is alread installed then set the
+SLEPC_DIR environment variable. If SLEPc is not installed, then install with pip:
 
     pip install slepc
+
+Then install slepc4py
+
     pip install slepc4py
 
 To Utilize AMGX solver:
